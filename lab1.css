@@ -8,14 +8,14 @@
  
  .box-one {    
  /* I can add a padding to the content, adding background to the element (and, consequently, more space around it) */
-     padding: 0em;
+     padding: 0.1em;
      background-color: #EB5757;
      
  /* the border goes around the padding */
      border: 0em solid #27AE60;
      
  /* the margin is added to increase the space between two elements as it is outside the border. */
-     margin: 0.5em;
+     margin: 0em;
  }
  
  .box-two {
