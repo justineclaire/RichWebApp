@@ -108,7 +108,7 @@ select  {
     padding: .5rem;
 }
 
-.delete {
+.delete, .edit {
     font-family: inherit;
     font-size: inherit;
     padding: .5rem;

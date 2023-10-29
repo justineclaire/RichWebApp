@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone directory!</title>
+</head>
+<body>
+    <h1>Phone Directory!</h1>
+    <div class="form-container">
+      <form id="form">
+        <label for="name">
+          <input type="text" id="nameInput" placeholder="Contact Name">
+        </label>
+        <label for="number">
+            <input type="text" id="numberInput" placeholder="Number">
+        </label>
+        <label for="email">
+            <input type="text" id="emailInput" placeholder="Email Address">
+        </label>
+        <button type="submit">Create Contact</button>
+      </form>
+    </div>
+
+    <div class="search-container">
+        <label for="search">Search contact by mobile number:
+            <input type="text" id="searchInput" onkeyup="searchContact()">
+          </label>
+    </div>
+
+    <div class="contact-container">
+        <table>
+          <tr class="=header">
+            <th id="nameHead" onclick="sortTable()">Name</th>
+            <th id="numberHead">Number</th>
+            <th id="emailHead">Email</th>
+          </tr>
+            
+        </table>
+    </div>
+    <script src="./scripts.js"></script>
+  </body>
+  </html>
