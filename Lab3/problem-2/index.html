@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
+        <title>Countdown</title>
+
+    </head> 
+<body>
+    <h1>Countdown</h1>
+    <form id="form">
+      
+        <input type="text" id="hour" placeholder="H" maxlength="2">
+        <span>:</span>
+        <input type="text" id="min" placeholder="M" maxlength="2">
+        <span>:</span>
+        <input type="text" id="sec" placeholder="S" maxlength="2">
+        <button id="button">Start Countdown</button>
+    </form>
+    <span id="chour">00</span>:<span id="cmin">00</span>:<span id="csec">00</span>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
