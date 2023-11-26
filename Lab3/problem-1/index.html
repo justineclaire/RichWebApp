@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Take Notes Here!</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/7.8.1/rxjs.umd.min.js"></script>
+        <script src="./scripts.js"></script>
+        <title>Notes App with RxJS</title>
+
+    </head> 
 <body>
     <div class="form-container">
       <h1>Note Taker</h1>
@@ -23,14 +25,12 @@
             <option value="blue">Blue</option>
             <option value="green">Green</option>
         </select>
-        <button id="button" type="submit">submit</button>
+        <input id="ibutton" type="submit">
       </form>
     </div>
     <div class="note-container">
-   
+    <span hidden class="delete"></span>
     </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.js"></script>
-    <script type="module" src="./scripts.js"></script>
+    <script src="./scripts.js"></script>
   </body>
   </html>

@@ -1,5 +1,24 @@
 {
+  "type": "module",
   "dependencies": {
     "rxjs": "^7.8.1"
-  }
+  },
+  "name": "richwebapp",
+  "description": "My 4th year Rich Web Application Lab Work!\r https://github.com/justineclaire/RichWebApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justineclaire/RichWebApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justineclaire/RichWebApp/issues"
+  },
+  "homepage": "https://github.com/justineclaire/RichWebApp#readme"
 }
