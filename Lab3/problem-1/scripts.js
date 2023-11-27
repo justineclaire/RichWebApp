@@ -8,7 +8,8 @@ const form = document.querySelector('form');
 const button = document.getElementById('ibutton');
 const titleinput = document.querySelector('#title');
 const noteinput = document.querySelector('#note');
-const colourinput = document.querySelector('#colour').value;
+const colourinput = document.querySelector('#colour');
+
 
 
 //Show alert message
@@ -46,31 +47,50 @@ function removeAllNotes() {
 }
 
 //remove a note from storage
-function removeNote() {
+function removeNote(id) {
     const notes = getNotes();
     notes.forEach((note, index) => {
-        /*if(note.id === id){
+        console.log(id);
+        if(note.id === Number(id) || Number(note.parent) === Number(id)){
             notes.splice(index, 1);
-        }*/
-        notes.splice(index, 1);
-        localStorage.setItem('noteApp.notes', JSON.stringify(notes));
+        }
     })
+    localStorage.setItem('noteApp.notes', JSON.stringify(notes));
 }
 
 // create note for user
 function addNotetoList(note){
+    if (note.parent === null) {
     const newUINote = document.createElement('div');
     newUINote.classList.add('note');
+    newUINote.id = note.id;
     newUINote.classList.add(note.colour);
     newUINote.innerHTML = `
     <span hidden>${note.id}</span>
     <h2 class='note-title'>${note.title}</h2>
-    <p class='note-body'>${note.note}</p>
+    <p class='note-body'>${note.body}</p>
     <div class="note-btns">
         <button class="delete">delete</button>
+        <button class="child">add child</button>
     </div>
     `;
     noteContainer.appendChild(newUINote);
+    } else {
+        const parentNote = document.getElementById(note.parent); //where parent is the id of the parent note
+        const newUINote = document.createElement('div');
+        newUINote.classList.add('note');
+        newUINote.classList.add(parentNote.id);
+        newUINote.classList.add(note.colour);
+        newUINote.innerHTML = `
+        <span hidden>${note.id}</span>
+        <h2 class='note-title'>${note.title}</h2>
+        <p class='note-body'>${note.body}</p>
+        <button class="delete">delete</button>
+        `;
+        parentNote.appendChild(newUINote);
+    }
+    
+    
 }
 
 //show notes to user
@@ -89,25 +109,26 @@ const delNote = deletePressed.pipe(
         // Assuming each note has an 'id' attribute
         if(event.target.classList.contains('delete')){
         const closestNote = event.target.closest('.note');
+        
         return closestNote;
     }
 }));
 
-const deletePressed$ = delNote.subscribe(note => { 
+const deleteNote = delNote.subscribe(note => { 
     if (note) {
         showAlertMessage('Your note was permanently deleted', 'remove-message');
+        const id = note.querySelector('span').textContent;
         note.remove();
-        const id = currentNote.querySelector('span').textContent;
         removeNote(id);
         
     } else {
+        showAlertMessage('Your note was not deleted', 'remove-message');
         console.log('No matching note found');
     }
 });
 
 //event loaded
-const loaded = fromEvent(document, 'DOMContentLoaded');
-const loaded$ = loaded.subscribe(displayNotes());
+const loaded = fromEvent(document, 'change').subscribe(displayNotes());
 
 
 //event create note
@@ -118,9 +139,10 @@ const noteobj = submitPressed.pipe(
         event.preventDefault();
     
         return {
+            parent: null,
             title: titleinput.value,
-            note: noteinput.value,
-            colour: colourinput,
+            body: noteinput.value,
+            colour: colourinput.value,
             id: Math.random()
         }
     })
@@ -130,18 +152,37 @@ noteobj.subscribe(note => {
     createAndHandleNote(note);
 });
   
-  function createAndHandleNote(note) {
-    if(titleinput.value.length > 0 && noteinput.value.length > 0){
-        addNotetoList(note);
-        addNotetoStorage(note);
-        titleinput.value = '';
-        noteinput.value = '';
-        showAlertMessage('Note successfully added', 'success-message');
-        titleinput.focus();
+function createAndHandleNote(note) {
+if(note.title.length > 0 && note.body.length > 0){
+    addNotetoList(note);
+    addNotetoStorage(note);
+    titleinput.value = '';
+    noteinput.value = '';
+    showAlertMessage('Note successfully added', 'success-message');
+    titleinput.focus();
 
-  } else {
-    showAlertMessage('Please add both a title and a note', 'alert-message');
-  }}
+} else {
+showAlertMessage('Please add both a title and a note', 'alert-message');
+}}
 
+const addChildPressed = fromEvent(noteContainer, 'click');
+const childNote = addChildPressed.pipe(
+    map(event => {
+        // Assuming each note has an 'id' attribute
+        if(event.target.classList.contains('child')){
+        const closestNote = event.target.closest('.note');
+        const parentId = closestNote.id;
+
+        return {
+            parent: parentId,
+            title: titleinput.value,
+            body: noteinput.value,
+            colour: colourinput.value,
+            id: Math.random()
+        }
+    }
+})).subscribe(note => {
+    createAndHandleNote(note);
+});
 
 });
