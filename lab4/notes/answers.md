@@ -4,8 +4,9 @@ Props in react are a way to pass data or properties between components.
 e.g.
 ``` {notes.map((note) => (
                 <Note key={note.id} note={note} addChild={addChild} removeNote={removeNote} editNote={editNote} piratify={piratify}/>
-    ))} ```
-    
+    ))} 
+```
+
 State is the realtime data available only in the component it is created in. 
 
 # Question 2
