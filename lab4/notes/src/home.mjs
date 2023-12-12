@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Note from './note.js';
 import sbflute from './sbflute.mp3';
 import ship from './ship.jpg';
+import sky from './sky.jpg';
 
 export default Home;
 
@@ -23,7 +24,6 @@ useEffect(() => {
 useEffect(() => {
     document.querySelector('#title').value = '';
     document.querySelector('#note').value = '';
-    document.querySelector('#title').focus();
 }, [notes]);
 
 
@@ -84,9 +84,11 @@ const piratify = (note) => {
     play();
     document.getElementsByClassName('body')[0].style.backgroundImage = `url(${ship})`;
     document.getElementsByClassName('body')[0].style.backgroundSize = 'cover'; 
+    document.getElementById(note.id).style.backgroundImage = `url(${sky})`;
+    document.getElementById(note.id).style.backgroundSize = 'cover';
     setTimeout(() => { 
-        document.getElementsByClassName('body')[0].style.backgroundImage = 'none'; 
-    }, 4000);
+        document.getElementsByClassName('body')[0].style.backgroundImage = 'none';
+    }, 10000);
     
     const requestOptions = {
         method: 'POST',
@@ -98,7 +100,13 @@ const piratify = (note) => {
     };
     fetch('https://api.funtranslations.com/translate/pirate.json', requestOptions)
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(async data => { console.log(data.contents.translated)
+           document.querySelector('#title').value = note.title
+            document.querySelector('#colour').value = note.colour
+            document.querySelector('#note').value = await data.contents.translated
+            editNote(note.id)
+        });
+        
 };
 
 const editNote = (noteId) => {

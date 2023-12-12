@@ -6,7 +6,7 @@ function Note({note, addChild, removeNote, editNote, piratify}) {
     if (note.parent === null) {
         // This is a parent note
         return (
-            <div key={note.id} className={`note ${note.colour}`}>
+            <div key={note.id} id={note.id} className={`note ${note.colour}`}>
                 <h2 className='note-title'>{note.title}</h2>
                 <p className='note-body'>{note.body}</p>
                 <div className="note-btns">
@@ -24,7 +24,7 @@ function Note({note, addChild, removeNote, editNote, piratify}) {
     } else {
         // This is a child note
         return (
-            <div key={note.id} className={`cnote ${note.colour}`}>
+            <div key={note.id} id={note.id} className={`cnote ${note.colour}`}>
                 <span>{note.parent}</span>
                 <h2 className='note-title'>{note.title}</h2>
                 <p className='note-body'>{note.body}</p>
