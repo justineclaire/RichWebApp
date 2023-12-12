@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* notes css */
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
+form {
+    display: grid;
+    grid-gap: 0.5rem;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+label {
+    font-family: inherit;
+    font-size: inherit;
+}
+  
+input, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1 1 80%;
+    border: 3px solid white;
+    padding: 0.5rem;
+    width: 100%
+}
+
+button {
+    border: 3px solid transparent;
+    font-size: 1.3rem;
+    color: black;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.formbox {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    grid-gap: 1rem;
+    background-color: pink;
+}
+
+span {
+    display: none;
+}
+
+.form-container{
+    max-width: 400px;
+    justify-self: center;
+    grid-column: span 1; /* Span one column */
+    display: grid;
+    grid-gap: 1.5rem; /* Adjust the gap as needed */
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.form-container h1 {
+    font-size: 3rem;
+    text-align: left;
+    margin: 0;
+}
+
+.form-container h3 {
+    text-align: left;
+    margin: 0;
+}
+
+
+.body {
+    background-color: plum;
+    font-family: 'Onest', sans-serif;
+    box-sizing: border-box;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(autofit, minmax(300px, 1fr));
+}
+
+.note-container {
+    max-width: 2000px;
+    margin: 2rem auto 1rem;
+    display: flex;
+    flex-wrap: wrap; /* Allow notes to wrap to the next row */
+    justify-content: left; /* Distribute notes evenly in a row */
+    align-content: flex-start; 
+}
+
+.note {
+    border: 3px solid white;
+    padding: 1.5rem;
+    transition: all 250ms ease-out;
+    margin: 10px;
+    min-height: 150px;
+    min-width: 200px;
+    flex: 0 1 calc(25% - 20px); /* 4 notes in a row, considering margin */
+    box-sizing: border-box;
+    background-color: pink;
+}
+
+.cnote {
+    padding: 1.5rem;
+    border: 3px solid white;
+    box-sizing: border-box;
+}
+
+.note-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.note-body {
+    overflow: hidden;
+    max-height: 8rem;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+}
+
+select  {
+    font-family: inherit;
+    font-size: inherit;
+    padding: .5rem;
+}
+
+
+
+.delete, .edit, .childbtn {
+    font-family: inherit;
+    font-size: inherit;
+    padding: .5rem;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.blue {
+    background-color: rgb(212, 212, 246);
+}
+
+.green {
+    background-color: rgb(196, 249, 195);
+}

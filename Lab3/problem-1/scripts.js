@@ -86,6 +86,7 @@ function addNotetoList(note){
         <h2 class='note-title'>${note.title}</h2>
         <p class='note-body'>${note.body}</p>
         <button class="delete">delete</button>
+        <button class="child">add child</button>
         `;
         parentNote.appendChild(newUINote);
     }
