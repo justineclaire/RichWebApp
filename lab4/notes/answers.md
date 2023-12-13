@@ -48,10 +48,35 @@ const result = text => {
 # Question 3
 **We have looked at three kinds of asynchronous programming mechanisms, namely callbacks, promises and streams. Mention one advantage and one disadvantage of each type.**
 ### callbacks
-Callbacks allow non blocking operations (i.e. asynchronou)
+Callbacks are simple to use and easy to read for smaller functions.
+
+The disadvantage of callbacks is that they may lead to 'callback hell' where there are multiple nested callbacks and they become hard to read and hard to maintain.
+
+### promises
+Promises are easy to read and the .catch chain makes for easier error handling. 
+
+The disadvantage is that theres no way to cancel them once they are called. They either run or get rejected.
+
+### streams
+Streams can adapt to a lot of data coming in fast and can help to prevent memory overflow
+A disadvantage is they create extra complexity for simple asynchronous tasks that dont require such complexity.
 
 # Question 4
 **With the aid of a diagram and example code, describe the Cascading Style Sheets (CSS) Box Model and show how it can be used to space DOM elements**
 
+The CSS Box Model defines the layout and spacing of elements on a web page.
+
+![Alt text](src/1_E_YuB8x1B3T3h6PIJ_I9qQ.png)
+
+It can be used to space dom elements as below: 
+Content is the actual content of the box e.g. text
+Padding: Creates empty space between the content and the border.
+Border: Is the border surrounding the padding and content.
+Margin: Creates empty space outside the border. It is the space between the border and the other elements.
+
 # Question 5
 **Detail how the browser loads and bootstraps a rich web application from an initial URL.**
+First a user will make an initial request by clicking a link or typing a URL into a browser. 
+The request reaches the application and it will begin processing.
+When it finishes, it sends a HTML response back to the browser.
+The browser starts to process the DOM and once it has been processed, the DOMContentLoaded event occurs. Then the page is rendered. 

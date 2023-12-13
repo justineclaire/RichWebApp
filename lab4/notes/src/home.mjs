@@ -166,8 +166,6 @@ const editNote = (noteId) => {
                 <Note key={note.id} note={note} addChild={addChild} removeNote={removeNote} editNote={editNote} piratify={piratify}/>
             ))}
             </div>
-       
         </div>
     );
 };
-
