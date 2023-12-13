@@ -36,14 +36,22 @@ setNotes(JSON.parse(localStorage.getItem('noteApp.notes')));
 ```
 # Question 2
 **In functional programming, what does the term functor mean? Can you give an example in JavaScript?**
+A functor is a type of function that combines a function with a map. It is essentially an object with a map method on it which generates another object of the same type. For example, the code below takes text, makes it caps lock and returns text(same type as input just with some function done to it):
+```
+const result = text => {
+  return Container(text)
+    .map(x => x.toUpperCase())
+    .toString()
+}
 
+```
 # Question 3
 **We have looked at three kinds of asynchronous programming mechanisms, namely callbacks, promises and streams. Mention one advantage and one disadvantage of each type.**
+### callbacks
+Callbacks allow non blocking operations (i.e. asynchronou)
 
 # Question 4
 **With the aid of a diagram and example code, describe the Cascading Style Sheets (CSS) Box Model and show how it can be used to space DOM elements**
 
 # Question 5
 **Detail how the browser loads and bootstraps a rich web application from an initial URL.**
-
-# Question 6

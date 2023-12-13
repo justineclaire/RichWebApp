@@ -10,6 +10,7 @@ function Home() {
     
 //query selectors
 const [notes, setNotes] = useState ([]);
+const [filter, setFilter] = useState ('none');
 
 //get notes from storage
 useEffect(() => {
@@ -153,9 +154,15 @@ const editNote = (noteId) => {
                 </select>
                 <input id="ibutton" type="submit" onClick={addNote} />
             </form>
+            <select id="filter" value={filter} onChange={(e) => setFilter(e.target.value)}>
+                    <option value="none">No Filter</option>
+                    <option value="pink">Filter Pink</option>
+                    <option value="blue">Filter Blue</option>
+                    <option value="green">Filter Green</option>
+                </select>
             </div>
             <div className="note-container">
-            {notes.map((note) => (
+            {notes.filter( note => filter === 'none' || note.colour === filter ).map((note) => (
                 <Note key={note.id} note={note} addChild={addChild} removeNote={removeNote} editNote={editNote} piratify={piratify}/>
             ))}
             </div>
